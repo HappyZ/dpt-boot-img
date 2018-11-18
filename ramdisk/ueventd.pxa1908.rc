@@ -1,0 +1,118 @@
+/dev/snd/* 0660 system audio
+/dev/i2c-2 0600 system system
+/dev/citty* 0660 radio system
+/dev/ccichar 0640 radio radio
+/dev/ttyS2 0600 system system
+/dev/media0 0660 root camera
+/dev/uio1   0660 root camera
+/dev/video* 0660 root camera
+/dev/v4l-subdev* 0660 root camera
+/dev/cctdatadev0 0640 system system
+/dev/cctdatadev1 0660 radio bluetooth
+/dev/cidatatty* 0640 radio radio
+/dev/cidatatty1 0660 radio bluetooth
+/dev/cidatatty2 0660 media media
+/dev/imldev0 0660 system system
+/dev/bmm 0660 media media
+/dev/graphics/fb0 0666 system media
+/dev/graphics/galcore 0666 system media
+/dev/pmem 0666 media system
+/dev/pmem_adsp 0660 system camera
+/dev/pmem_wc 0660 system camera
+/dev/ion 0666 system graphics
+/dev/uio0 0660 media system
+/dev/rfkill 0660 system wifi
+/dev/geu 0660 media system
+/dev/tzdd 0660 system drmrpc
+/dev/mdtv* 0660 system system
+/dev/ttyS1 0660 system system
+/dev/radio0 0660 system system
+/sys/devices/virtual/input/input*   active    0660  root   input
+/sys/devices/virtual/input/input*   interval  0660  root   input
+/sys/devices/virtual/input/input*   wake      0220  root   input
+/sys/devices/virtual/input/input*   position  0660  root   input
+/dev/alarm-poweroff 0440 system system
+# telephony
+/dev/cctdev* 0660 system system
+/dev/umts_* 0660 system system
+/dev/msocket 0660 system system
+/dev/msocket_dump 0660 system system
+/dev/diag_dump 0660 system system
+/dev/ccidatastub 0660 system system
+/dev/psdatastub 0660 system system
+/dev/seh 0660 radio system
+/dev/audiostub_ctl 0660 media system
+/dev/audiostub_pcm 0660 media system
+/dev/ttymodem* 0660 system system
+/dev/ttydiag* 0660 system system
+/dev/cmsockdev* 0660 system system
+/dev/crmdev* 0660 system system
+/dev/amipc 0660 system system
+/dev/ttyGS0 0660 system system
+/dev/ppprd 0660 system system
+# MRD partition
+/dev/block/mmcblk0p1 0660 system system
+# MRD backup partition
+/dev/block/mmcblk0p2 0660 system system
+/dev/cpmem 0660 system root
+# radio partition
+/dev/block/mmcblk0p10 0600 system root
+/dev/mpu 0660 system system
+/dev/mpuirq 0660 system system
+/dev/accelirq 0660 system system
+/dev/timerirq 0660 system system
+# misc partition for sku-setting
+/dev/block/mmcblk0p9 0660 system root
+/dev/kmsg 0660 root system
+
+# bluetooth
+/dev/mbtchar* 0660 system net_bt_stack
+
+# fm
+/dev/mfmchar* 0660 system system
+
+# nfc
+/dev/mnfcchar* 0660 system nfc
+/dev/cxd224x-i2c* 0660 system nfc
+
+# cpu boost
+/dev/cpu_boost 0666 system system
+
+# gpu customize frequency
+/sys/devices/platform/galcore/gpu/gpu0/gpufreq userspace/customize_rate 0644 system root
+
+# dipchannel
+/dev/simple_dip 0660 radio system
+/sys/bus/platform/devices/d420b000.disp/freq 0664 radio system
+/sys/devices/platform/soc.2/d4200000.axi/mmp-disp/freq 0664 radio system
+/sys/class/graphics/fb0/state 0664 radio system
+
+# cpufreq customize governor parameters
+## ondemand
+/sys/devices/system/cpu/cpufreq ondemand/sampling_rate 0644 system root
+/sys/devices/system/cpu/cpufreq ondemand/up_threshold 0644 system root
+/sys/devices/system/cpu/cpufreq ondemand/powersave_bias 0644 system root
+/sys/devices/system/cpu/cpufreq ondemand/ignore_nice_load 0644 system root
+/sys/devices/system/cpu/cpufreq ondemand/io_is_busy 0644 system root
+/sys/devices/system/cpu/cpufreq ondemand/sampling_down_factor 0644 system root
+
+## conservative
+/sys/devices/system/cpu/cpufreq conservative/down_threshold 0644 system root
+/sys/devices/system/cpu/cpufreq conservative/freq_step 0644 system root
+/sys/devices/system/cpu/cpufreq conservative/sampling_rate 0644 system root
+/sys/devices/system/cpu/cpufreq conservative/up_threshold 0644 system root
+/sys/devices/system/cpu/cpufreq conservative/ignore_nice_load 0644 system root
+/sys/devices/system/cpu/cpufreq conservative/sampling_down_factor 0644 system root
+
+## interactive
+/sys/devices/system/cpu/cpufreq interactive/above_hispeed_delay 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/boost 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/boostpulse 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/boostpulse_duration 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/go_hispeed_load 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/hispeed_freq 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/min_sample_time 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/target_loads 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/timer_rate 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/timer_slack 0644 system root
+/sys/devices/system/cpu/cpufreq interactive/io_is_busy 0644 system root

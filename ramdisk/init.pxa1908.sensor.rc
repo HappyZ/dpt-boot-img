@@ -1,0 +1,314 @@
+on boot
+    ## Invensense IIO settings
+    # folders
+    chown system system /sys/bus/iio/devices/iio:device1/
+    chmod 0700           /sys/bus/iio/devices/iio:device1/
+    chown system system /sys/bus/iio/devices/iio:device1/power
+    chmod 0700           /sys/bus/iio/devices/iio:device1/power
+    chown system system /sys/bus/iio/devices/iio:device1/buffer
+    chmod 0700           /sys/bus/iio/devices/iio:device1/buffer
+    chown system system /sys/bus/iio/devices/iio:device1/trigger
+    chmod 0700           /sys/bus/iio/devices/iio:device1/trigger
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements
+    chmod 0700           /sys/bus/iio/devices/iio:device1/scan_elements
+
+    # MA 5.2.0
+    chown system system /sys/bus/iio/devices/iio:device1/accel_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/accel_enable
+    chown system system /sys/bus/iio/devices/iio:device1/accel_fifo_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/accel_fifo_enable
+    chown system system /sys/bus/iio/devices/iio:device1/accel_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/accel_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/accel_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/accel_rate
+    chown system system /sys/bus/iio/devices/iio:device1/gyro_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/gyro_enable
+    chown system system /sys/bus/iio/devices/iio:device1/gyro_fifo_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/gyro_fifo_enable
+    chown system system /sys/bus/iio/devices/iio:device1/gyro_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/gyro_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/gyro_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/gyro_rate
+
+    # files
+    chown system system /dev/iio:device1
+    chmod 0600           /dev/iio:device1
+    chown system system /sys/bus/iio/devices/iio:device1/dev
+    chmod 0600           /sys/bus/iio/devices/iio:device1/dev
+    chown system system /sys/bus/iio/devices/iio:device1/name
+    chmod 0600           /sys/bus/iio/devices/iio:device1/name
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_x_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_x_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_x_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_x_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_scale
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_scale
+    chown system system /sys/bus/iio/devices/iio:device1/power/control
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power/control
+    chown system system /sys/bus/iio/devices/iio:device1/power/runtime_active_time
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power/runtime_active_time
+    chown system system /sys/bus/iio/devices/iio:device1/power/autosuspend_delay_ms
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power/autosuspend_delay_ms
+    chown system system /sys/bus/iio/devices/iio:device1/power/runtime_status
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power/runtime_status
+    chown system system /sys/bus/iio/devices/iio:device1/power/runtime_suspended_time
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power/runtime_suspended_time
+    chown system system /sys/bus/iio/devices/iio:device1/pressure_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/pressure_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_x_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_x_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_x_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_x_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/sampling_frequency
+    chmod 0600           /sys/bus/iio/devices/iio:device1/sampling_frequency
+    chown system system /sys/bus/iio/devices/iio:device1/smd_threshold
+    chmod 0600           /sys/bus/iio/devices/iio:device1/smd_threshold
+    chown system system /sys/bus/iio/devices/iio:device1/smd_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/smd_enable
+    chown system system /sys/bus/iio/devices/iio:device1/secondary_name
+    chmod 0600           /sys/bus/iio/devices/iio:device1/secondary_name
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_y_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_y_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/length
+    chmod 0600           /sys/bus/iio/devices/iio:device1/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device1/sampling_frequency_available
+    chmod 0600           /sys/bus/iio/devices/iio:device1/sampling_frequency_available
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_y_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_y_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/master_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/master_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_z_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_z_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_z_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_z_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+    chmod 0600           /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+    chown system system /sys/bus/iio/devices/iio:device1/temperature
+    chmod 0600           /sys/bus/iio/devices/iio:device1/temperature
+    chown system system /sys/bus/iio/devices/iio:device1/three_axes_q_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/three_axes_q_on
+    chown system system /sys/bus/iio/devices/iio:device1/pressure_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/pressure_rate
+    chown system system /sys/bus/iio/devices/iio:device1/uevent
+    chmod 0600           /sys/bus/iio/devices/iio:device1/uevent
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_z_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_z_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_z_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_z_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_y_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_y_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_y_calibbias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_y_calibbias
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_scale
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_scale
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_type
+    chmod 0600           /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_type
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_index
+    chmod 0600           /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_index
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_en
+    chmod 0600           /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_en
+    chown system system /sys/bus/iio/devices/iio:device1/power_state
+    chmod 0600           /sys/bus/iio/devices/iio:device1/power_state
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_scale
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_scale
+    chown system system /sys/bus/iio/devices/iio:device1/reg_dump
+    chmod 0600           /sys/bus/iio/devices/iio:device1/reg_dump
+    chown system system /sys/bus/iio/devices/iio:device1/three_axes_q_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/three_axes_q_rate
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_cadence
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_cadence
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_cadence_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_cadence_enable
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_int_period
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_int_period
+    chown system system /sys/bus/iio/devices/iio:device1/event_shealth_int
+    chmod 0600           /sys/bus/iio/devices/iio:device1/event_shealth_int
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_instant_cadence
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_instant_cadence
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_flush_cadence
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_flush_cadence
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_freq_threshold
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_freq_threshold
+    chown system system /sys/bus/iio/devices/iio:device1/shealth_timer
+    chmod 0600           /sys/bus/iio/devices/iio:device1/shealth_timer
+
+    # ICM-20628
+    chown system system /sys/bus/iio/devices/iio:device1/debug_accel_accuracy_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_accel_accuracy_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_accel_cal_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_accel_cal_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_accel_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_accel_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_anglvel_accuracy_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_anglvel_accuracy_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_cfg_write
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_cfg_write
+    chown system system /sys/bus/iio/devices/iio:device1/debug_clock_sel
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_clock_sel
+    chown system system /sys/bus/iio/devices/iio:device1/debug_compass_cal_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_compass_cal_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_compass_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_compass_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_magn_accuracy_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_magn_accuracy_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_cycle_mode_off
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_cycle_mode_off
+    chown system system /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_accel_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_accel_rate
+    chown system system /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_gyro_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_gyro_rate
+    chown system system /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_data_collection_mode_on
+    chown system system /sys/bus/iio/devices/iio:device1/debug_determine_engine_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_determine_engine_on
+    chown system system /sys/bus/iio/devices/iio:device1/debug_dmp_event_int_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_dmp_event_int_on
+    chown system system /sys/bus/iio/devices/iio:device1/debug_dmp_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_dmp_on
+    chown system system /sys/bus/iio/devices/iio:device1/debug_gyro_cal_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_gyro_cal_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_gyro_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_gyro_enable
+    chown system system /sys/bus/iio/devices/iio:device1/debug_low_power_gyro_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_low_power_gyro_on
+    chown system system /sys/bus/iio/devices/iio:device1/debug_lp_en_off
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_lp_en_off
+    chown system system /sys/bus/iio/devices/iio:device1/debug_mem_read
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_mem_read
+    chown system system /sys/bus/iio/devices/iio:device1/debug_mem_write
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_mem_write
+    chown system system /sys/bus/iio/devices/iio:device1/debug_reg_dump
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_reg_dump
+    chown system system /sys/bus/iio/devices/iio:device1/debug_reg_write
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_reg_write
+    chown system system /sys/bus/iio/devices/iio:device1/debug_reg_write_addr
+    chmod 0600           /sys/bus/iio/devices/iio:device1/debug_reg_write_addr
+    chown system system /sys/bus/iio/devices/iio:device1/event_pedometer_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/event_pedometer_enable
+    chown system system /sys/bus/iio/devices/iio:device1/event_smd_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/event_smd_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_6quat_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_6quat_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_6quat_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_6quat_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_accel_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_accel_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_anglvel_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_anglvel_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_calib_anglvel_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_calib_anglvel_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_calib_anglvel_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_calib_anglvel_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_p6quat_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_p6quat_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_p6quat_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_p6quat_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_step_detector_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_step_detector_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_step_indicator_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_step_indicator_enable
+    chown system system /sys/bus/iio/devices/iio:device1/info_accel_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_accel_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/info_anglvel_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_anglvel_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/info_firmware_loaded
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_firmware_loaded
+    chown system system /sys/bus/iio/devices/iio:device1/info_gyro_sf
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_gyro_sf
+    chown system system /sys/bus/iio/devices/iio:device1/info_secondary_name
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_secondary_name
+    chown system system /sys/bus/iio/devices/iio:device1/misc_accel_recalibration
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_accel_recalibration
+    chown system system /sys/bus/iio/devices/iio:device1/misc_batchmode_timeout
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_batchmode_timeout
+    chown system system /sys/bus/iio/devices/iio:device1/misc_bin_cur_magn_covariance
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_bin_cur_magn_covariance
+    chown system system /sys/bus/iio/devices/iio:device1/misc_bin_dmp_firmware
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_bin_dmp_firmware
+    chown system system /sys/bus/iio/devices/iio:device1/misc_bin_accel_covariance
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_bin_accel_covariance
+    chown system system /sys/bus/iio/devices/iio:device1/misc_bin_magn_covariance
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_bin_magn_covariance
+    chown system system /sys/bus/iio/devices/iio:device1/misc_bin_soft_iron_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_bin_soft_iron_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/misc_flush_batch
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_flush_batch
+    chown system system /sys/bus/iio/devices/iio:device1/misc_gyro_recalibration
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_gyro_recalibration
+    chown system system /sys/bus/iio/devices/iio:device1/misc_self_test
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_self_test
+    chown system system /sys/bus/iio/devices/iio:device1/out_pedometer_counter
+    chmod 0600           /sys/bus/iio/devices/iio:device1/out_pedometer_counter
+    chown system system /sys/bus/iio/devices/iio:device1/out_pedometer_steps
+    chmod 0600           /sys/bus/iio/devices/iio:device1/out_pedometer_steps
+    chown system system /sys/bus/iio/devices/iio:device1/out_pedometer_time
+    chmod 0600           /sys/bus/iio/devices/iio:device1/out_pedometer_time
+    chown system system /sys/bus/iio/devices/iio:device1/out_temperature
+    chmod 0600           /sys/bus/iio/devices/iio:device1/out_temperature
+    chown system system /sys/bus/iio/devices/iio:device1/params_accel_calibration_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_accel_calibration_rate
+    chown system system /sys/bus/iio/devices/iio:device1/params_accel_calibration_threshold
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_accel_calibration_threshold
+    chown system system /sys/bus/iio/devices/iio:device1/params_pedometer_int_on
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_pedometer_int_on
+    chown system system /sys/bus/iio/devices/iio:device1/params_pedometer_int_thresh
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_pedometer_int_thresh
+    chown system system /sys/bus/iio/devices/iio:device1/params_pedometer_step_thresh
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_pedometer_step_thresh
+    chown system system /sys/bus/iio/devices/iio:device1/params_smd_delay_threshold
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_smd_delay_threshold
+    chown system system /sys/bus/iio/devices/iio:device1/params_smd_delay_threshold2
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_smd_delay_threshold2
+    chown system system /sys/bus/iio/devices/iio:device1/params_smd_threshold
+    chmod 0600           /sys/bus/iio/devices/iio:device1/params_smd_threshold
+    chown system system /sys/bus/iio/devices/iio:device1/poll_pedometer
+    chmod 0600           /sys/bus/iio/devices/iio:device1/poll_pedometer
+    chown system system /sys/bus/iio/devices/iio:device1/poll_smd
+    chmod 0600           /sys/bus/iio/devices/iio:device1/poll_smd
+    chown system system /sys/bus/iio/devices/iio:device1/in_calib_magn_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_calib_magn_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_calib_magn_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_calib_magn_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_geomag_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_geomag_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_geomag_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_geomag_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_enable
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_enable
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_rate
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_rate
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_x_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_x_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_y_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_y_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_z_dmp_bias
+    chmod 0600           /sys/bus/iio/devices/iio:device1/in_magn_z_dmp_bias
+    chown system system /sys/bus/iio/devices/iio:device1/info_magn_matrix
+    chmod 0600           /sys/bus/iio/devices/iio:device1/info_magn_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/misc_magn_recalibration
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_magn_recalibration
+    chown system system /sys/bus/iio/devices/iio:device1/misc_ref_mag_3d
+    chmod 0600           /sys/bus/iio/devices/iio:device1/misc_ref_mag_3d
+## Memsic permission setting
+    chmod 0660           /dev/ptacc_ctrl
+    chown system system /dev/ptacc_ctrl
+    chmod 0660           /dev/ecompass_ctrl
+    chown system system /dev/ecompass_ctrl
+
+# daemon service for memsic sensors
+service memsicp /system/bin/memsicp
+    class main
+    oneshot
+    user system
+    group system
+service memsicd /system/bin/memsicd
+    class main
+    oneshot
+    user system
+    group system

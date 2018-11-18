@@ -1,0 +1,24 @@
+#only TZ mode will mount secure partition successful
+
+on early-init
+    # set SEAndroid permissive mode at init
+    setenforce 0
+
+on fs
+    mkdir /teesst 0700 root root
+    mount ext4 /dev/block/platform/soc.2/by-name/secure /teesst
+    chmod 0700 /teesst
+
+on post-fs
+    # tz trial
+    insmod /lib/modules/tzdd.ko
+    start teecsstdca
+    #chown media media /system/etc/HDCP
+    #chmod 0600 /system/etc/HDCP
+
+service teecsstdca /system/bin/teec_sstd_ca /teesst
+    class core
+    user root
+    oneshot
+    disabled
+

@@ -1,0 +1,111 @@
+on init
+    export NVM_ROOT_DIR /NVM
+    export MARVELL_RW_DIR /tmp/acat
+    # RIL properties
+    setprop rild.libpath /system/lib/libmarvell-ril.so
+    setprop rild.libpath64 /system/lib64/libmarvell-ril.so
+
+on fs
+    # create /tmp directory
+    mkdir /tmp 0700 system system
+    mount tmpfs tmpfs /tmp mode=0777,uid=1000,gid=1000
+
+on post-fs-data
+    # load AP specific files
+    exec /system/bin/mrdloader /NVM
+    # disable DAD
+    write /proc/sys/net/ipv6/conf/ccinet0/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet1/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet2/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet3/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet4/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet5/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet6/accept_dad 0
+    write /proc/sys/net/ipv6/conf/ccinet7/accept_dad 0
+
+on property:ril.dumpall.enable=1
+    start dumpall
+
+on property:ril.dumpall.enable=0
+    stop dumpall
+
+on property:init.svc.nvm=stopped
+    exec /system/bin/telmon nvm
+
+on property:init.svc.atcmdsrv=stopped
+    exec /system/bin/telmon atcmdsrv
+
+on property:init.svc.diag=stopped
+    exec /system/bin/telmon diag
+
+on property:init.svc.pppmodem=stopped
+    exec /system/bin/telmon pppmodem
+
+service eeh /system/bin/eeh -M yes
+    disabled
+    group system
+
+service nvm /system/bin/nvm
+    disabled
+    oneshot
+    group system
+
+service nvm-aponly /system/bin/nvm -A
+    disabled
+    group system
+
+service diag /system/bin/diag
+    disabled
+    oneshot
+    group system
+
+service diag-aponly /system/bin/diag -A
+    disabled
+    group system
+
+service iml /system/bin/IMLLog
+    disabled
+    group system
+
+service atcmdsrv /system/bin/atcmdsrv
+    disabled
+    oneshot
+    group system net_admin
+
+service atcmdsrv-aponly /system/bin/atcmdsrv -A
+    disabled
+    group system
+
+service pppmodem /system/bin/pppmodem
+    disabled
+    oneshot
+    group system
+    user system
+
+service dumpall /system/bin/dumpall.sh
+    oneshot
+    disabled
+
+service mfgbridge /system/bin/mfgbridge
+    oneshot
+    disabled
+
+service log_on_boot /system/bin/log_on_boot.sh
+    user radio
+    group system log
+    oneshot
+    disabled
+
+service tcpdump_on_boot /system/bin/tcpdump_on_boot.sh
+    user root
+    group root
+    oneshot
+    disabled
+
+service at_router /system/bin/at_router
+    disabled
+    socket atil stream 660 system radio
+    socket atil2 stream 660 system radio
+    socket embmsd stream 666
+    oneshot
+    group system

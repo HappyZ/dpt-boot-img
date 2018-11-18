@@ -1,0 +1,44 @@
+## fstab has the following format:
+##
+## Any line starting with a # is a comment and ignored
+##
+## Any blank line is ignored
+##
+## All other lines must be in this format:
+##   <source>  <mount_point> <fs_type> <mount_flags> <fs_options> <fs_mgr_options>
+##
+##   <mount_flags> is a comma separated list of flags that can be passed to the
+##                 mount command.  The list includes noatime, nosuid, nodev, nodiratime,
+##                 ro, rw, remount, defaults.
+##
+##   <fs_options> is a comma separated list of options accepted by the filesystem being
+##                mounted.  It is passed directly to mount without being parsed
+##
+##   <fs_mgr_options> is a comma separated list of flags that control the operation of
+##                     the fs_mgr program.  The list includes "wait", which will wait till
+##                     the <source> file exists, and "check", which requests that the fs_mgr
+##                     run an fscheck program on the <source> before mounting the filesystem.
+##                     If check is specifed on a read-only filesystem, it is ignored.
+##                     Also, "encryptable" means that filesystem can be encrypted.
+##                     The "encryptable" flag _MUST_ be followed by a : and a string which
+##                     is the location of the encryption keys.  I can either be a path
+##                     to a file or partition which contains the keys, or the word "footer"
+##                     which means the keys are in the last 16 Kbytes of the partition
+##                     containing the filesystem.
+##
+## When the fs_mgr is requested to mount all filesystems, it will first mount all the
+## filesystems that do _NOT_ specify check (including filesystems that are read-only and
+## specify check, because check is ignored in that case) and then it will check and mount
+## filesystem marked with check.
+##
+##
+/dev/block/platform/soc.2/by-name/system     /system       ext4      ro                                                          wait,check
+/dev/block/platform/soc.2/by-name/userdata   /data         ext4      discard,noatime,nosuid,nodev,nomblk_io_submit,errors=panic  wait,check,encryptable=footer
+/dev/block/platform/soc.2/by-name/cache      /cache        ext4      discard,noatime,nosuid,nodev,nomblk_io_submit,errors=panic  wait,check
+/devices/platform/soc.2/d4200000.axi/d4208100.ehci/usb1                 auto          vfat      defaults        voldmanaged=usb:auto
+/devices/platform/soc.2/d4200000.axi/d4280000.sdh/mmc_host/mmc1        auto          vfat      defaults                                                    voldmanaged=external:auto
+## zramsize if the maximum uncompressed memory size (in bytes) that can be
+## swapped to this zRAM partition. Current value got from experiments to be
+## larger than typical maximum memory requirements. Note that zRAM partition
+## does not reserve much memory if no memory pages swapped to it.
+/dev/block/zram0                             none          swap      defaults                                                    zramsize=268435456

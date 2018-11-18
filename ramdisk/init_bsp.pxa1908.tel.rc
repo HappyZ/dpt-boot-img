@@ -1,0 +1,28 @@
+import /init.tel.rc
+
+on init
+    # set CP master or slave
+    setprop persist.radio.pcmmaster 0
+
+on fs
+# mount emmc partitions
+
+    # create directory for NVM data, and mount nvm partition on it
+    mkdir /NVM 0744 system system
+
+    # for e2fsck bad block of /NVM partition before mount
+    exec /system/bin/e2fsck -vy /dev/block/platform/soc.2/by-name/NVM
+
+    mount ext4 /dev/block/platform/soc.2/by-name/NVM /NVM nosuid nodev nodelalloc,noauto_da_alloc
+    chown system system /NVM
+    chmod 0775 /NVM
+
+service marvelltel /system/bin/tel_launch_no_gui.sh
+    class main
+    oneshot
+    group system
+
+service mrvl_gpsd /system/bin/mrvl_gpsd
+    class main
+    user system
+    group system

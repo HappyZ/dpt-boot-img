@@ -1,0 +1,282 @@
+import init.pxa1908.usb.rc
+import init_bsp.pxa1908.tel.rc
+import init.pxa1908.security.rc
+
+on init
+# See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /mnt/shell/emulated/0 0700 shell shell
+    mkdir /mnt/media_rw/external 0700 media_rw media_rw
+
+    mkdir /storage/emulated 0555 root root
+    mkdir /storage/external 0555 root root
+
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export SECONDARY_STORAGE /storage/external
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+    export MEDIA_STORAGE /data/media
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+    setprop ro.board.platform mrvl
+
+    write /proc/sys/vm/legacy_va_layout 1
+
+    # for control LCD backlight
+    chown system system /sys/class/backlight/lcd-bl/brightness
+
+    # for sd8xxx wifi and bluetooth power
+    chown system system /sys/class/rfkill/rfkill0/state
+    chown system system /sys/class/rfkill/rfkill1/state
+
+    setprop persist.sys.display.format 1
+
+    #wifi
+    chmod 0660 /sys/devices/platform/sd8x-rfkill/pwr_ctrl
+    chown system system /sys/devices/platform/sd8x-rfkill/pwr_ctrl
+
+    #cpu
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0444 /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq
+
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_setspeed
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+
+    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_setspeed
+    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+    chmod 0444 /sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_cur_freq
+
+    #hotplug
+    chown system system /sys/devices/system/cpu/hotplug/bound_freq
+    chown system system /sys/devices/system/cpu/hotplug/load_h0
+    chown system system /sys/devices/system/cpu/hotplug/load_h1
+    chown system system /sys/devices/system/cpu/hotplug/load_h2
+    chown system system /sys/devices/system/cpu/hotplug/load_l1
+    chown system system /sys/devices/system/cpu/hotplug/load_l2
+    chown system system /sys/devices/system/cpu/hotplug/load_l3
+    chown system system /sys/devices/system/cpu/hotplug/lock
+    chown system system /sys/devices/system/cpu/cpu1/online
+    chown system system /sys/devices/system/cpu/cpu2/online
+    chown system system /sys/devices/system/cpu/cpu3/online
+
+    chmod 0644 /sys/devices/system/cpu/hotplug/bound_freq
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_h0
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_h1
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_h2
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_l1
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_l2
+    chmod 0644 /sys/devices/system/cpu/hotplug/load_l3
+    chmod 0644 /sys/devices/system/cpu/hotplug/lock
+    chmod 0644 /sys/devices/system/cpu/cpu1/online
+    chmod 0644 /sys/devices/system/cpu/cpu2/online
+    chmod 0644 /sys/devices/system/cpu/cpu3/online
+
+    #ddr
+    chown system system /sys/class/devfreq/devfreq-ddr/polling_interval
+    chown system system /sys/class/devfreq/devfreq-ddr/min_freq
+    chown system system /sys/class/devfreq/devfreq-ddr/max_freq
+    chown system system /sys/class/devfreq/devfreq-ddr/governor
+    chown system system /sys/class/devfreq/devfreq-ddr/cur_freq
+
+    #vpu
+    chown system system /sys/class/devfreq/devfreq-vpu.0/userspace/set_freq
+    chown system system /sys/class/devfreq/devfreq-vpu.0/min_freq
+    chown system system /sys/class/devfreq/devfreq-vpu.0/max_freq
+    chown system system /sys/class/devfreq/devfreq-vpu.0/governor
+    chown system system /sys/class/devfreq/devfreq-vpu.0/cur_freq
+
+    #keypad wakeup source
+    chown system system /sys/devices/platform/soc.2/d4000000.apb/pxa27x-keypad/power/wakeup
+
+    #pm runtime
+    chown system system /sys/class/graphics/fb0/device/power/control
+    chown system system /sys/bus/platform/drivers/mmp-disp/mmp-disp/power/control
+    chown system system /sys/bus/platform/drivers/mmp-vdma/d4209000.vdma/power/control
+    chown system system /sys/devices/platform/mrvl8xxx_fm.0/power/control
+    chown system system /sys/bus/i2c/devices/1-0022/power/control
+    chown system system /sys/bus/i2c/devices/1-0026/power/control
+
+    #autosleep
+    chown system system /sys/power/autosleep
+
+    chmod 0660 /sys/power/panic
+    chown root system /sys/power/panic
+
+    chown system system /sys/class/power_supply/battery/device/calibration
+    chown system system /sys/devices/platform/mmp-gps/ctrl
+
+    chown system system /sys/class/graphics/fb0/device/vsync
+    chmod 0660 /sys/class/graphics/fb0/device/vsync
+
+    #GSSP device
+    chown system system /proc/driver/pcm_mfp
+    chmod 0666 /proc/driver/pcm_mfp
+
+    # master/slave
+    chown media audio /sys/devices/platform/sound/ssp_master
+    chmod 0664 /sys/devices/platform/sound/ssp_master
+
+    chown media audio /sys/devices/platform/sound/gssp_master
+    chmod 0664 /sys/devices/platform/sound/gssp_master
+
+    #set ap as master, codec/BT as slave
+    setprop persist.audio.apmaster 1
+    setprop persist.audio.gsspmaster 1
+    setprop persist.audio.codecmaster 0
+    setprop persist.bt.pcmmaster 0
+
+    # gssp record
+    chown media audio /sys/devices/platform/sound/gssp_record
+    chmod 0664 /sys/devices/platform/sound/gssp_record
+
+    #enable DRM service
+    setprop drm.service.enabled true
+
+    setprop battery.fake_ac 1
+
+on fs
+    # mount /data by fstab to support encryption.
+    mount_all /fstab.pxa1908
+
+    mount debugfs debugfs /sys/kernel/debug
+
+    setprop ro.crypto.fuse_sdcard true
+
+on post-fs
+    # hotplug
+    chown system system /sys/devices/system/cpu/cpunum_qos/min_core_num
+    chown system system /sys/devices/system/cpu/cpunum_qos/max_core_num
+
+    # add non-cache trace node to radio group
+    chown system radio /sys/kernel/debug/tracing/trace_noncached_on
+    chmod 0664 /sys/kernel/debug/tracing/trace_noncached_on
+
+on post-fs-data
+    setprop wifi.interface wlan0
+    setprop wifidirect.interface p2p0
+
+    # create folder to save wifi/bt config files with mac address, and calibrate files
+    mkdir /data/misc/wireless 0771 system system
+
+    # create filesystem for wifi & dhcp
+    mkdir /data/misc/wifi 0771 wifi wifi
+    mkdir /data/misc/wifi/sockets 0771 wifi wifi
+    mkdir /data/misc/wifi/wapi_certs 0777 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+    #Power Meter: for duty cycle profiling
+    chown system system /sys/kernel/debug/pxa/stat/cpu_dc_stat
+    chown system system /sys/kernel/debug/pxa/stat/ddr_dc_stat
+    chown system system /sys/kernel/debug/pxa/stat/gc2d_core0_dc_stat
+    chown system system /sys/kernel/debug/pxa/stat/gc3d_core0_dc_stat
+    chown system system /sys/kernel/debug/pxa/stat/gcsh_core0_dc_stat
+    chown system system /sys/kernel/debug/pxa/stat/vpu_dc_stat
+    chown system system /sys/kernel/debug/pxa/vlstat/vol_dc_stat
+    chown system system /sys/class/devfreq/devfreq-ddr/device/ddr_profiling
+
+    chmod 0664 /sys/kernel/debug/pxa/vlstat/vol_dc_stat
+
+    # for log capture
+    mkdir /data/log 0775 system shell
+
+    mkdir /data/log/Mlog 0775 system radio
+    chown radio shell /data/log/Mlog
+    chmod 0775 /data/log/Mlog
+
+    # copy last kernel panic log
+    copy /sys/fs/pstore/console-ramoops /data/log/console-ramoops
+
+    # for simal
+    mkdir /data/misc/simal 0777 wifi system
+    chmod 0777 /data/misc/simal
+
+    # for Phone plugin
+    mkdir /data/misc/phone 0777 media media
+    chown media media /data/misc/phone
+    chmod 0777 /data/misc/phone
+
+    #Audio Dump: for audio data dump 
+    mkdir /data/log/audio 0777 system shell
+
+    #Audio Calibration: for socket access
+    mkdir /data/misc/audio 0750 media system
+
+    # for camera dump
+    mkdir /data/log/camera 0775 media shell
+
+    # for NFC
+    mkdir /data/nfc 0771 nfc system
+
+    #This line should be put at the end of post-fs-data action
+    setprop vold.post_fs_data_done 1
+
+on boot
+    setprop ro.media.gst.enabled 1
+    setprop service.camera.af 1
+
+    #enable camera ZSL feature
+    setprop service.camera.zsl_mask 1
+
+    #enable camera MMU
+    setprop service.camera.isp.mmu 1
+
+    # enable bluetooth dial-up network
+    setprop  ro.bluetooth.dun true
+
+    # set opengles version as 0x20000
+    # opengles major version = (version & 0xffff0000)>>16
+    # opengles minor version = version & 0xffff
+    setprop ro.opengles.version 131072
+
+    # Enable HW decoder for video thumbnail generation
+    setprop thumbnail.extract.hw_num 1
+
+
+# set lcd density accoring to LCD info to support multiple LCD panel
+on property:ro.boot.lcd=720p
+    setprop ro.sf.lcd_density 320
+    setprop ro.hwui.text_small_cache_height 512
+    setprop ro.hwui.text_large_cache_height 512
+
+on property:ro.boot.lcd=1080p
+    setprop dalvik.vm.heapgrowthlimit 128m
+    setprop ro.sf.lcd_density 480
+    setprop ro.hwui.text_small_cache_height 512
+    setprop ro.hwui.text_large_cache_height 512
+    setprop ro.hwui.texture_cache_size 48.0
+    setprop ro.hwui.layer_cache_size 32.0
+    setprop ro.hwui.fbo_cache_size  32
+
+on property:ro.config.low_ram=true
+    # Enable KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+    # Config swap page cluster size to 1 page for zRAM
+    write /proc/sys/vm/page-cluster 0
+
+    # Enable zRAM swap
+    swapon_all /fstab.pxa1908
+
+on property:ro.boot.low_ram=true
+    # Android framework needs default property set
+    setprop ro.config.low_ram true
