@@ -6,7 +6,7 @@ find . | cpio -o -H newc | gzip -9 > ../test.img-ramdisk-mod.gz
 
 cd ..
 
-../mkbootimg \
+../mkbootimg/mkbootimg \
     --kernel test.img-zImage \
     --ramdisk test.img-ramdisk-mod.gz \
     --cmdline "$(cat test.img-cmdline)" \
