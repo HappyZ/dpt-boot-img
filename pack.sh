@@ -1,5 +1,7 @@
 #/bin/bash
 
+OUTPUT_FILE="../test-mod-$(date +'%y%m%d-%H%M%S').img"
+
 cd ramdisk
 
 find . | cpio -o -H newc | gzip -9 > ../test.img-ramdisk-mod.gz
@@ -19,4 +21,6 @@ cd ..
     --tags_offset $(cat test.img-tagsoff) \
     --header_version $(cat test.img-headerversion) \
     --hash $(cat test.img-hash) \
-    -o "../test-mod-$(date +'%y%m%d-%H%M%S').img"
+    -o ${OUTPUT_FILE}
+
+md5 ${OUTPUT_FILE}
