@@ -24,6 +24,14 @@ on property:sys.usb.config=acm,hid,adb
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
+on property:sys.usb.config=acm,hid,adb,mass_storage
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idProduct 0be5
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/f_mass_storage/lun/file /dev/block/mmcblk0p16
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
 
 # CDC-ECM(ethernet)
 on property:sys.usb.config=ecm
